@@ -11,6 +11,14 @@ module.exports = [
 					"nacion  enviar paquetes tcp sobre udp"]
     },
     {
+      link:"watch?v=1JD2q6cZ_P0",
+      keywords:["how to wifi wep mac",
+      "Mac OS X with aircrack",
+      "tutorial wep wifi mac os",
+      " wifi wep mac x aircrack",
+      "obtener contraseña wifi mac os x"]  
+    },
+    {
         link:"watch?v=CGUw_OTmbqU",
         keywords:[" Exploit shellshock bash",
 					"falla shellshock",
@@ -25,7 +33,7 @@ module.exports = [
     },
     {
         link:"watch?v=mRRrJkiu63g",
-        keywords:[" [AssS] Anonimato como servicio ",
+        keywords:[" [AaaS] Anonimato como servicio ",
 					"openshift tor proxy",
 					"anomimato nacionbit"]
     },

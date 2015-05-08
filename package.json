@@ -1,0 +1,18 @@
+{
+  "name": "yoview",
+  "version": "0.0.0",
+  "description": "Bot with a lot of free time to watch videos",
+  "main": "app.js",
+  "dependencies": {
+    "colors": "^1.1.0",
+    "selenium-webdriver": "^2.45.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "bot",
+    "youtube",
+    "views"
+  ],
+  "author": "Javier Garcia P.",
+  "license": "GPL v3"
+}
