@@ -9,5 +9,6 @@ This a bot to do views in youtube like a human,
 
 ```sh
 git clone https://github.com/JavaGarcia/yoview.git
+cd yoview
 npm install
 ```
