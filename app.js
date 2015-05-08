@@ -30,39 +30,39 @@ var watchFail = function(current,max){
   //add later other method (return or random way to search) //next version
   driver.get('http://www.youtube.com');
   try {
-  driver.wait(function(){
-    return driver.isElementPresent(By.name("search_query"));
-  },10000).then(function(){
-    console.log("[+] Youtube... \tOK");
-    console.log("[+] Search... \t("+xWord+")");
-    driver.findElement(By.name('search_query')).clear();
-    driver.findElement(By.name('search_query')).sendKeys(xWord+keys.RETURN).then(function(){
-      driver.wait(until.titleIs(xWord +' - YouTube'), 10000).then(function(){
-        console.log("[+] Show response...");
-        driver.sleep(random(timeWait[0]*1000,timeWait[1]*1000)).then(function(){
-          console.log("[+] Video selected... \tOk");
-          driver.findElement(By.xpath("//*[@class='item-section']/li["+random(1,15)+"]/div/div/div[1]/a")).click().then(function(){
-            driver.wait(function(){
-              return driver.isElementPresent(By.xpath("//*[@id='watch-like']"));
-            },10000).then(function(){
-              var time = random(timeFail[0],timeFail[1],true)*60;
-              console.log("[>] Video... \tPLAY"+" time: "+time+" seconds.");
-              driver.sleep(time*1000).then(function(){
-                console.log("[x] Done!");
-                if((current+1)<=max){
-                  watchFail((current+1),max);
-                }else{
-                  if(i<videos.length-1){
-                    watch();
+    	driver.wait(function(){
+        return driver.isElementPresent(By.name("search_query"));
+      },10000).then(function(){
+      console.log("[+] Youtube... \tOK");
+      console.log("[+] Search... \t("+xWord+")");
+      driver.findElement(By.name('search_query')).clear();
+      driver.findElement(By.name('search_query')).sendKeys(xWord+keys.RETURN).then(function(){
+        driver.wait(until.titleIs(xWord +' - YouTube'), 10000).then(function(){
+          console.log("[+] Show response...");
+          driver.sleep(random(timeWait[0]*1000,timeWait[1]*1000)).then(function(){
+            console.log("[+] Video selected... \tOk");
+            driver.findElement(By.xpath("//*[@class='item-section']/li["+random(1,15)+"]/div/div/div[1]/a")).click().then(function(){
+              driver.wait(function(){
+                return driver.isElementPresent(By.xpath("//*[@id='watch-like']"));
+              },10000).then(function(){
+                var time = random(timeFail[0],timeFail[1],true)*60;
+                console.log("[>] Video... \tPLAY"+" time: "+time+" seconds.");
+                driver.sleep(time*1000).then(function(){
+                  console.log("[x] Done!");
+                  if((current+1)<=max){
+                    watchFail((current+1),max);
+                  }else{
+                    if(i<videos.length-1){
+                      watch();
+                    }
                   }
-                }
+                });
               });
             });
           });
         });
       });
     });
-  });
   }catch(e){
     console.log(e);
     watchFail((current),max);
@@ -126,9 +126,7 @@ var options = new firefox.Options().setProfile(profile);
 
 driver = new webdriver.Builder()
           .forBrowser('firefox')
-          .setFirefoxOptions(options);
-if(proxyPort!=""&&proxyIP!=""){
-  driver.setProxy(proxy.manual({http: proxyIP+':'+proxyPort}))
-}
-driver.build();
+          .setFirefoxOptions(options)
+          .setProxy(proxy.manual({http: proxyIP+':'+proxyPort}))
+          .build();
 watchFail(1,random(nxFail[0],nxFail[1]))          
