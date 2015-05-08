@@ -14,8 +14,8 @@ var driver;
 var i = 0;
 /* ---CONFIG--- */
 //proxy http
-var proxyIP   = "localhost",
-    proxyPort = "1111";
+var proxyIP   = "",
+    proxyPort = "";
 //Limits of random number between [a,b]
 var timeFail = [0.5,1.5], //Time for video Fail playback (minutes)
     timeReal = [1,5],     //Time for video Real playback (minutes)
@@ -27,7 +27,7 @@ var watchFail = function(current,max){
   var x =  random(0,words.length-1);
   var xWord = words[x];
   console.log("[!] Video fail "+current+"/"+max);
-  //add later other method (return or random way to search)
+  //add later other method (return or random way to search) //next version
   driver.get('http://www.youtube.com');
   try {
   driver.wait(function(){
@@ -126,7 +126,9 @@ var options = new firefox.Options().setProfile(profile);
 
 driver = new webdriver.Builder()
           .forBrowser('firefox')
-          .setProxy(proxy.manual({http: proxyIP+':'+proxyPort}))
-          .setFirefoxOptions(options)
-          .build();
+          .setFirefoxOptions(options);
+if(proxyPort!=""&&proxyIP!=""){
+  driver.setProxy(proxy.manual({http: proxyIP+':'+proxyPort}))
+}
+driver.build();
 watchFail(1,random(nxFail[0],nxFail[1]))          
