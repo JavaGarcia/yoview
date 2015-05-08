@@ -100,7 +100,7 @@ var watch = function(){
       });
     });
   });
-}
+};
 
 var random = function(min,max,float){
   if(float){
@@ -108,7 +108,7 @@ var random = function(min,max,float){
   }else{
     return Math.floor((Math.random() * max) + min);
   }
-}
+};
 
 
 var firefox = require('selenium-webdriver/firefox');

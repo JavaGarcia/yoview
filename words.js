@@ -1,5 +1,5 @@
 module.exports = [
-  "Real madrid vs barcelona",
+ "Real madrid vs barcelona",
   "Champions League",
   "the best fail",
   "Obama fun",
@@ -12,7 +12,6 @@ module.exports = [
   "skype release",
   "Messi",
   "start wars",
-  "how to make ",
   "world cup finals",
   "movie action 2015",
   "pokemon",
