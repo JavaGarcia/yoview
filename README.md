@@ -1,4 +1,21 @@
 # yoview
+```
+             +-------------+           
+             |             |           
+             |  ++     ++  |           
+             |  ++     ++  | XXXXXXXXX 
+             |             |         XX
+             +-------------+          X
+                  |---|               X
+        +-+-------------------+-+   XXX
+    XXXX| |                   | |XXXX  
+   XX   +-+      +-----+      +-+      
+   X      |      | |-> |      |        
+   X      |      +-----+      |        
+XXXX      |      yoview       |        
+X         +-------------------+        
+
+```
 This a bot to do views in youtube like a human, 
 ### Features
 
