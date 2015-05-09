@@ -25,7 +25,7 @@ var timeFail = [0.5,1.5], //Time for video Fail playback (minutes)
 
 var watchFail = function(current,max){
   var x =  random(0,words.length-1);
-  var xWord = words[x];
+  var xWord = words[x].trim();
   console.log("[!] Video fail "+current+"/"+max);
   //add later other method (return or random way to search) //next version
   driver.get('http://www.youtube.com');
@@ -73,8 +73,8 @@ var watch = function(){
   var xKeyword = random(0,videos[i].keywords.length-1);
   console.log("[+] Search Video by keyword \t= "+videos[i].keywords[xKeyword]);
   driver.findElement(By.name('search_query')).clear();
-  driver.findElement(By.name('search_query')).sendKeys(videos[i].keywords[xKeyword]+keys.RETURN).then(function(){
-    driver.wait(until.titleIs(videos[i].keywords[xKeyword] +' - YouTube'), 10000).then(function(){
+  driver.findElement(By.name('search_query')).sendKeys(videos[i].keywords[xKeyword].trim()+keys.RETURN).then(function(){
+    driver.wait(until.titleIs(videos[i].keywords[xKeyword].trim() +' - YouTube'), 10000).then(function(){
       console.log("[+] Show response... \t and search link");
       driver.sleep(random(1000,6000)).then(function(){
         driver.findElement(By.xpath("//a[contains(@href,'"+videos[i].link+"')]")).click().then(function(){
@@ -110,11 +110,8 @@ var random = function(min,max,float){
   }
 };
 
-
 var firefox = require('selenium-webdriver/firefox');
-
 var profile = new firefox.Profile();
-//profile.addExtension('/path/to/firebug.xpi');
 var xUA = random(0,userAgent.length-1)
 console.log("Open browser using "+userAgent[xUA]);
 profile.setPreference("general.useragent.override", userAgent[xUA]);
@@ -127,6 +124,12 @@ var options = new firefox.Options().setProfile(profile);
 driver = new webdriver.Builder()
           .forBrowser('firefox')
           .setFirefoxOptions(options)
-          .setProxy(proxy.manual({http: proxyIP+':'+proxyPort}))
+          .setProxy({ proxyType:'manual',
+                      ftpProxy:'',
+                      httpProxy:'',
+                      sslProxy:'',
+                      noProxy:'',
+                      socksProxy:''
+          })
           .build();
 watchFail(1,random(nxFail[0],nxFail[1]))          
