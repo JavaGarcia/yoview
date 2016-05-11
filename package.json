@@ -1,7 +1,7 @@
 {
   "name": "yoview",
   "version": "0.0.5",
-  "description": "Bot with a lot of free time to watch videos",
+  "description": "a bot with a lot of free time to watch videos",
   "main": "app.js",
   "dependencies": {
     "selenium-webdriver": "^2.45.1"
